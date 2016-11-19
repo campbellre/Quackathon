@@ -12,12 +12,14 @@
 <head><title>Team Owl</title><h1>Team Owl</h1></head>
 
 <div>
-	<form action="/login" method="POST" >
-		<input type="text" id="username" value="Username"><br>
-		<input type="password" id="password" value="Password"><br>
-		<input type="submit" value="Login">
-		<button id="login" onclick="submit">Login</button>
-	</form>
+    #if($auth-success)
+        <p>yes</p>
+    #end
+    <form action="/login" method="POST" >
+        <input type="text" name="username" id="username" value="Username"><br>
+        <input type="password" name="password" id="password" value="Password"><br>
+        <button id="login" onclick="submit">Login</button>
+    </form>
 
 </div>
 

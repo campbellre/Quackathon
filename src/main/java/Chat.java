@@ -18,6 +18,9 @@ public class Chat {
         staticFiles.expireTime(600);
         webSocket("/chat", ChatWebSocketHandler.class);
         init();
+
+        get("/login", Login.GetPage);
+        post("/login", Login.LoginPost);
     }
 
     //Sends a message from one user to all users, along with a list of current usernames
