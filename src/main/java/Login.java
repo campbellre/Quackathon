@@ -25,34 +25,6 @@ public class Login {
     private static String Username = "test";
     private static String Password = "password";
 
-    public static Boolean getAttempt(String username, String password) {
-
-        // TODO setup database
-        // Get the user details from the database
-
-        // TEST FUNCTION
-        if( ! username.equals(Username))
-        {
-            return false;
-        }
-        // Check the password
-
-        if( ! password.equals(Password))
-        {
-            return false;
-        }
-
-        // return success or fail
-        return true;
-
-    }
-
-    public static Boolean registerUser(String username, String password)
-    {
-        return false;
-    }
-
-
     public static Route GetPage = (spark.Request request, spark.Response respone) ->
     {
         Map<String, Object> model = new HashMap<>();
