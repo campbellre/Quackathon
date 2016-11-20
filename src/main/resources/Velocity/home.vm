@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="login.html"><img src="imgs/logout.png"></a>
+          <a class="navbar-brand" href="/login"><img src="imgs/logout.png"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -55,31 +55,38 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
     <div class="container">
-		<div class="starter-template" style="widtht:300px;">
-			<div class="row" style="width:500px;">
-				<div class="col-md-6 thumb">
-					<a class="thumbnail" href="#">
-						<img class="img-responsive" src="imgs/cat1.jpg" alt="" style="height:200px; object-fit:cover" >
-					</a>
-				</div>
-				<div class="col-md-6 thumb">
-					<a class="thumbnail" href="#">
-						<img class="img-responsive" src="imgs/cat2.jpg" alt="" style="height:200px; object-fit:cover" >
-					</a>
-				</div>
-				<div class="col-md-6 thumb">
-					<a class="thumbnail" href="#">
-						<img class="img-responsive" src="imgs/cat3.jpg" alt="" style="height:200px; object-fit:cover" >
-					</a>
-				</div>
-				<div class="col-md-6 thumb">
-					<a class="thumbnail" href="#">
-						<img class="img-responsive" src="imgs/cat4.jpg" alt="" style="height:200px; object-fit:cover" >
-					</a>
-				</div>
+
+      <div class="starter-template">
+		<div class="row" style="width:500px;">
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/trust.png" style="height:100px; object-fit:cover">
 			</div>
-		  </div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/joy.png" style="height:100px; object-fit:cover">
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/sadness.png" style="height:100px; object-fit:cover">
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/anticipation.png" style="height:100px; object-fit:cover">
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/anger.png" style="height:100px; object-fit:cover">
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/surprise.png" style="height:100px; object-fit:cover">
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/disgust.png" style="height:100px; object-fit:cover">
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive portfolio-item" src="imgs/fear.png" style="height:100px; object-fit:cover">
+			</div>
+		</div>
+        
+      </div>
 
     </div><!-- /.container -->
 

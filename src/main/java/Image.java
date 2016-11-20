@@ -1,20 +1,20 @@
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Ryan on 20/11/2016.
  */
 public class Image {
 
-    public static List<String> GetImageList()
+    public static ArrayList<MyFile> GetImageList()
     {
         System.out.println("in get image");
-        List<String> fileList = new ArrayList<String>();
+        Map<String, MyFile> fMap = new HashMap<String, MyFile>();
         URL resource = Image.class.getResource("public/images");
         File imageDir = null;
         try {
@@ -28,12 +28,15 @@ public class Image {
                 if (f.isDirectory()) {
                 } else if (f.isFile()) {
                     System.out.println(f.getName());
-                    fileList.add(f.getName());
+                    MyFile file = new MyFile();
+                    file.setName(f.getName());
+                    file.setPath(f.getPath());
+                    fMap.put(file.getName(), file);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fileList;
+        return new ArrayList<>(fMap.values());
     };
 }

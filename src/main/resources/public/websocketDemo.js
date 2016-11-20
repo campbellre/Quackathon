@@ -1,4 +1,7 @@
 //Establish the WebSocket connection and set up event handlers
+var ws = new WebSocket("ws://" + location.hostname + ":" + location.port + "/images/");
+ws.onmessage = function (msg) { updateChat(msg); };
+ws.onclose = function () { };
 
 var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat/");
 webSocket.onmessage = function (msg) { updateChat(msg); };
@@ -9,18 +12,9 @@ id("send").addEventListener("click", function () {
     sendMessage(id("message").value);
 });
 
-//Send message if enter is pressed in the input field
-id("message").addEventListener("keypress", function (e) {
-    if (e.keyCode === 13) { sendMessage(e.target.value); }
-});
-
-id("imagelist").addEventListener("load", function () {
-   httpGetAsync("http://" + location.hostname + ":" + location.port + "/images/", loadImages);
-});
-
 function httpGetAsync(theUrl, callback)
 {
-    console.log("heyy");
+    alert("heey");
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
@@ -29,14 +23,30 @@ function httpGetAsync(theUrl, callback)
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
     xmlHttp.send(null);
 }
+//Send message if enter is pressed in the input field
+id("message").addEventListener("keypress", function (e) {
+    if (e.keyCode === 13) { sendMessage(e.target.value); }
+});
+
+id("images").addEventListener("click", function () {
+   httpGetAsync("http://" + location.hostname + ":" + location.port + "/images", loadImages);
+});
+
 
 function loadImages(obj) {
     console.log("hello");
-    data = obj;
+    data = JSON.parse(obj);
     id("imagelist").innerHTML = "";
-    data.forEach(function(path) {
-        id("imagelist").insertAdjacentHTML("afterbegin", '<li> <img src="' + path + '"/> </li>');
-    });
+
+    for(var i = 0; i < data.length; i++)
+    {
+        //var tmp = data[i].name.replace(/['"]+/g, '')
+        id("imagelist").insertAdjacentHTML("afterbegin", '<li> <img src="/images/'
+            + data[i].name
+            + '" onclick="sendMessage(\''
+            + data[i].name
+            + '\');" /> </li>');
+    }
 }
 
 
@@ -47,6 +57,14 @@ function sendMessage(message) {
         window.alert(splitTest[0]);
         if (message !== "") {
         webSocket.send(message);
+        id("message").value = "";
+    }
+}
+
+//Send a message if it's not empty, then clear the input field
+function sendMessage(message) {
+    if (message !== "") {
+        ws.send(message);
         id("message").value = "";
     }
 }

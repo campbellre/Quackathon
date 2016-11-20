@@ -21,6 +21,7 @@ public class Chat {
         staticFiles.location("/public"); //index.html is served at localhost:4567 (default port)
         staticFiles.expireTime(600);
         webSocket("/chat", ChatWebSocketHandler.class);
+        webSocket("/images", ImageWebSocketHandler.class);
         init();
 
         get("/login", Login.GetPage);
@@ -98,7 +99,7 @@ public class Chat {
         System.out.println("in html");
         return article().with(
                 b(sender + " says:"),
-                img().withSrc("/images/images.png"),
+                img().withSrc("/images/" + message),
                 span().withClass("timestamp").withText(new SimpleDateFormat("HH:mm:ss").format(new Date()))
         ).render();
     }
