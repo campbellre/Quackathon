@@ -25,10 +25,7 @@ public class Login {
     private static String Username = "test";
     private static String Password = "password";
 
-    public static Route GetPage = (spark.Request request, spark.Response respone) ->
-    {
-        Map<String, Object> model = new HashMap<>();
-
+    public static VelocityTemplateEngine engine(){
         VelocityEngine conEngine = new VelocityEngine();
         conEngine.setProperty("runtime.references.string", true);
         conEngine.setProperty("resource.loader", "class");
@@ -36,7 +33,16 @@ public class Login {
 
         VelocityTemplateEngine vte = new VelocityTemplateEngine(conEngine);
 
-        return vte.render(new ModelAndView(model, "/Velocity/login.vm"));
+        return vte;
+    }
+
+    public static Route GetPage = (spark.Request request, spark.Response response) ->
+    {
+        Map<String, Object> model = new HashMap<>();
+
+
+
+        return engine().render(new ModelAndView(model, "/Velocity/login.vm"));
     };
 
     public static Route LoginPost = (spark.Request request, spark.Response response)-> {
@@ -55,14 +61,6 @@ public class Login {
         Map<String, Object> model = new HashMap<>();
         model.put("auth-success", true);
 
-
-        VelocityEngine conEngine = new VelocityEngine();
-        conEngine.setProperty("runtime.references.strict", true);
-        conEngine.setProperty("resource.loader", "class");
-        conEngine.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
-
-        VelocityTemplateEngine vte = new VelocityTemplateEngine(conEngine);
-
-        return vte.render(new ModelAndView(model, "/Velocity/login.vm"));
+        return engine().render(new ModelAndView(model, "/Velocity/login.vm"));
     };
 }
