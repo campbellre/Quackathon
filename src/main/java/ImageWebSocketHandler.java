@@ -22,13 +22,7 @@ public class ImageWebSocketHandler
 
     @OnWebSocketMessage
     public void onMessage(Session user, String message) {
-        if(message.equals(":computer:") || message.equals("images.png")) {
-            System.out.println("in image");
             Chat.broadcastMessageI(sender = Chat.userUsernameMap.get(user), msg = message);
-        }
-        else{
-            Chat.broadcastMessageI(sender = Chat.userUsernameMap.get(user), msg = message);
-        }
     }
 
 

@@ -5,16 +5,15 @@ ws.onclose = function () { };
 
 var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat/");
 webSocket.onmessage = function (msg) { updateChat(msg); };
-webSocket.onclose = function () { alert("WebSocket connection closed") };
+webSocket.onclose = function () { };
 
 //Send message if "Send" is clicked
-id("send").addEventListener("click", function () {
+id("images").addEventListener("click", function () {
     sendMessage(id("message").value);
 });
 
 function httpGetAsync(theUrl, callback)
 {
-    alert("heey");
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
@@ -53,9 +52,6 @@ function loadImages(obj) {
 
 //Send a message if it's not empty, then clear the input field
 function sendMessage(message) {
-        var dummyTest = "0,2,3,1,4;"
-        var splitTest = dummyTest.split(",");
-        window.alert(splitTest[0]);
         if (message !== "") {
         webSocket.send(message);
         id("message").value = "";

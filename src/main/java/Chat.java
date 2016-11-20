@@ -128,6 +128,7 @@ public class Chat {
 
     private static String createHtmlImageMessageFromSender(String sender, String path) {
         System.out.println("in html");
+        if(sender == null || sender == "null") { sender = "default";}
         return article().with(
                 b(sender + " says:"),
                 img().withSrc(path),
