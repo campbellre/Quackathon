@@ -15,7 +15,10 @@ id("message").addEventListener("keypress", function (e) {
 
 //Send a message if it's not empty, then clear the input field
 function sendMessage(message) {
-    if (message !== "") {
+        var dummyTest = "0,2,3,1,4;"
+        var splitTest = dummyTest.split(",");
+        window.alert(splitTest[0]);
+        if (message !== "") {
         webSocket.send(message);
         id("message").value = "";
     }
@@ -23,6 +26,7 @@ function sendMessage(message) {
 
 //Update the chat-panel, and the list of connected users
 function updateChat(msg) {
+
     var data = JSON.parse(msg.data);
     insert("chat", data.userMessage);
     id("userlist").innerHTML = "";

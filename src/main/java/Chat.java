@@ -6,6 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static j2html.TagCreator.*;
 import static spark.Spark.*;
+import HardCodedVals.HardCodedVals;
 
 public class Chat {
 
@@ -25,13 +26,20 @@ public class Chat {
 
     //Sends a message from one user to all users, along with a list of current usernames
     public static void broadcastMessage(String sender, String message) {
+        HardCodedVals hcv = new HardCodedVals();
+        //Take messages
+        List<Integer> stickerIDs = new ArrayList<Integer>();
+        hcv.insertPost(sender, stickerIDs);
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
                 session.getRemote().sendString(String.valueOf(new JSONObject()
                         .put("userMessage", createHtmlMessageFromSender(sender, message))
                         .put("userlist", userUsernameMap.values())
+                        .put("idString", userUsernameMap.values())
                 ));
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         });

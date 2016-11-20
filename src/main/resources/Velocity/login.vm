@@ -9,13 +9,19 @@
 
 <html>
 
-<head><title>Team Owl</title><h1>Team Owl</h1></head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebsSockets</title>
+<title>Team Owl</title>
+<h1>Team Owl</h1>
+</head>
 
 <div>
     #if($auth-success)
         <p>yes</p>
     #end
-    <form action="/login" method="POST" >
+
+    <form action="/login" method="POST">
         <input type="text" name="username" id="username" value="Username"><br>
         <input type="password" name="password" id="password" value="Password"><br>
         <button id="login" onclick="submit">Login</button>
