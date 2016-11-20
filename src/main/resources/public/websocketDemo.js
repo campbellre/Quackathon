@@ -42,10 +42,11 @@ function loadImages(obj) {
     {
         //var tmp = data[i].name.replace(/['"]+/g, '')
         id("imagelist").insertAdjacentHTML("afterbegin", '<li> <img src="/images/'
-            + data[i].name
-            + '" onclick="sendMessage(\''
-            + data[i].name
-            + '\');" /> </li>');
+                                                      + data[i].name
+                                                      + '" onclick="sendMessage(\''
+                                                      + data[i].name
+                                                      + '\');" /> </li>');
+
     }
 }
 

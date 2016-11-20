@@ -30,11 +30,11 @@ public class HardCodedVals
         pva[2].insertVals("Kate", 2);
         
         upa[0] = new UserPairs();
-        upa[0].insertUser("Connor", "Looks Smart But Is Very Fucking Stupid");
+        upa[0].insertUser("Connor", "csewell");
         upa[1] = new UserPairs();
-        upa[1].insertUser("Ryan", "Vape Nation");
+        upa[1].insertUser("Ryan", "rcampbell");
         upa[2] = new UserPairs();
-        upa[2].insertUser("Kate", "Polish");
+        upa[2].insertUser("Kate", "kprus");
         
         List<Integer> stickerIDs = Arrays.asList(1);
         PostPairs pp = new PostPairs();
