@@ -15,12 +15,21 @@ import java.util.List;
 public class PostPairs 
 {
     //List<int> stickerIDs = new List<int>();
-    public String username;
+    private String username;
     public List<Integer> stickerIDs = new ArrayList<>();
     
     public void insertPostPairs(String username, List<Integer> stickerIDs)
     {
         this.username = username;
         this.stickerIDs = stickerIDs;
+    }
+
+    public List<Integer> getStickerIDs()
+    {
+        return this.stickerIDs;
+    }
+
+    public String getName(){
+        return this.username;
     }
 }

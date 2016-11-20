@@ -7,14 +7,26 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
 <html>
-	<div id = "Add Feed">
-		<text>Blablablablablaflasfasldalsd we post things here bvdkfldsfkeskfoof</text>
-		<button>Post</button>
-	</div>
-	
-	<div id = "FeedBulk">
-		<text>VDFDFLSAFKSDKSALDKSADLKD feed shit is here fSADSSADSADASDSDASDAD</text>
-	</div>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebsSockets</title>
+<title>Team Owl</title>
+<h1>Team Owl</h1>
+</head>
+
+<div>
+    #if($auth-success)
+        <p>yes</p>
+    #end
+
+    <form action="/login" method="POST">
+        <input type="text" name="username" id="username" value="Username"><br>
+        <input type="password" name="password" id="password" value="Password"><br>
+        <button id="login" onclick="submit">Login</button>
+    </form>
+
+</div>
+
 </html>

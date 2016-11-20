@@ -20,7 +20,7 @@ public class HardCodedVals
     UserPairs[] upa = new UserPairs[3];
     List<PostPairs> ppa = new ArrayList<PostPairs>();
     
-    private void hardCodeVals()
+    public HardCodedVals()
     {
         pva[0] = new IDPairs();
         pva[0].insertVals("Connor", 0);
@@ -34,7 +34,7 @@ public class HardCodedVals
         upa[1] = new UserPairs();
         upa[1].insertUser("Ryan", "Vape Nation");
         upa[2] = new UserPairs();
-        upa[2].insertUser("Kate", "Polish Person");
+        upa[2].insertUser("Kate", "Polish");
         
         List<Integer> stickerIDs = Arrays.asList(1);
         PostPairs pp = new PostPairs();
@@ -42,7 +42,7 @@ public class HardCodedVals
         ppa.add(pp);
         
         stickerIDs = Arrays.asList(0, 3, 2, 4);
-        
+        pp = new PostPairs();
         pp.insertPostPairs("Connor", stickerIDs);
         ppa.add(pp);
         stickerIDs = Arrays.asList(1, 5, 3);
@@ -59,7 +59,7 @@ public class HardCodedVals
         ppa.add(pp);        
     }
     
-    private void insertPost(String username, List<Integer> stickerIDs)
+    public void insertPost(String username, List<Integer> stickerIDs)
     {
         PostPairs pp = new PostPairs();
         pp.insertPostPairs(username, stickerIDs);
@@ -67,7 +67,7 @@ public class HardCodedVals
         
     }
     
-    private void getUserPosts(String username)
+    public List<PostPairs> getUserPosts(String username)
     {
         
         List<PostPairs> posts = new ArrayList<>();
@@ -76,31 +76,34 @@ public class HardCodedVals
         
         for(int l = 0; l < ppa.size(); l++)
         {
-          if(ppa.get(l).username == username)
-          {
+          //if(ppa.get(l).username.equals(username))
+          //{
               PostPairs pp = new PostPairs();
-              pp.insertPostPairs(username, ppa.get(l).stickerIDs);
+              pp.insertPostPairs(ppa.get(l).getName(), ppa.get(l).stickerIDs);
               posts.add(pp);
-          }
+          //}
         }
         
-        for(int k = 0; k < posts.size(); k++)
-        {
-            System.out.println("Post... " + Integer.toString(posts.get(k).stickerIDs.get(1)));
-        }
+        //for(int k = 0; k < posts.size(); k++)
+        //{
+        //    System.out.println("Post... " + Integer.toString(posts.get(k).stickerIDs.get(1)));
+       // }
+
+        return posts;
     }
    
-    private Boolean checkUserValid(String username, String password)
+    public Boolean checkUserValid(String username, String password)
     {
+
         for(int i = 0; i < pva.length; i++)
         {
-            if(pva[i].name == username)
+            if(pva[i].name.equals(username))
             {
                 for(int k = 0; k < upa.length; k++)
                 {
-                    if(upa[k].name == username)
+                    if(upa[k].name.equals(username))
                     {
-                        if(upa[k].password == password)
+                        if(upa[k].password.equals(password))
                         {
                             System.out.println("True");
                             return true;
@@ -109,18 +112,17 @@ public class HardCodedVals
                 }
             }
         }
-        
         return false;
     }
  
    
-    public static void main(String[] args) 
+    /*public static void main(String[] args)
     {
         // TODO code application logic here
         HardCodedVals hcv = new HardCodedVals();
         
         hcv.hardCodeVals();
-        hcv.checkUserValid("Ryasn", "Vape Nation");
+        hcv.checkUserValid("Ryan", "Vape Nation");
         hcv.getUserPosts("Kate");
   
         hcv.insertPost("Kate", Arrays.asList(1, 9, 2));
@@ -128,5 +130,5 @@ public class HardCodedVals
         
         
     }
-    
+    */
 }
