@@ -28,10 +28,12 @@ public class Image {
                 if (f.isDirectory()) {
                 } else if (f.isFile()) {
                     System.out.println(f.getName());
-                    MyFile file = new MyFile();
-                    file.setName(f.getName());
-                    file.setPath(f.getPath());
-                    fMap.put(file.getName(), file);
+                    if(!f.getName().equals("Thumbs.db")) {
+                        MyFile file = new MyFile();
+                        file.setName(f.getName());
+                        file.setPath(f.getPath());
+                        fMap.put(file.getName(), file);
+                    }
                 }
             }
         } catch (Exception e) {
