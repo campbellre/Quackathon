@@ -27,11 +27,15 @@ public class Chat {
         get("/login", Login.GetPage);
         post("/login", Login.LoginPost);
 
-        get("/images",  (req, res) -> Image.GetImageList(), json());
+        get("/images",  (req, response) -> {
+                    response.type("application/json");
+                    return Image.GetImageList();
+                }, json());
 
-        after((req, res) -> {
-            res.type("application/json");
-        });
+
+        //after((req, res) -> {
+        //    res.type("application/json");
+        //});
     }
 
     //Sends a message from one user to all users, along with a list of current usernames
