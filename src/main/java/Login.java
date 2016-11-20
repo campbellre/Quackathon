@@ -1,21 +1,13 @@
 /**
  * Created by Ryan on 19/11/2016.
  */
-import org.eclipse.jetty.server.Authentication;
-import org.eclipse.jetty.server.Request;
-import org.eclipse.jetty.server.RequestLog;
-import org.eclipse.jetty.server.Response;
-import org.eclipse.jetty.websocket.api.*;
-import org.json.*;
 import spark.ModelAndView;
 import spark.Route;
 import spark.template.velocity.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
-import static j2html.TagCreator.*;
-import static spark.Spark.*;
+import java.util.*;
+
+import HardCodedVals.HardCodedVals;
 
 import org.apache.velocity.app.*;
 
@@ -43,18 +35,28 @@ public class Login {
         String u = request.queryParams("username");
         String p = request.queryParams("password");
 
+        System.out.println("hey");
 
-        if (!u.equals(Username)) {
-            return null;
-        }
-
-        if (!p.equals(Password)) {
-            return null;
-        }
+        HardCodedVals hcv = new HardCodedVals();
 
         Map<String, Object> model = new HashMap<>();
-        model.put("auth-success", true);
+        Map<String, Object> loggedInModel = new HashMap<>();
 
+        String page;
+
+        if(hcv.checkUserValid(u, p))
+        {
+            model.put("auth-success", true);
+            model.put("username", u);
+            model.put("posts", hcv.getUserPosts(u));
+            page = "/Velocity/Feed.vm";
+
+        }
+        else
+        {
+            model.put("auth-success", false);
+            page = "/Velocity/login.vm";
+        }
 
         VelocityEngine conEngine = new VelocityEngine();
         conEngine.setProperty("runtime.references.strict", true);
@@ -63,6 +65,6 @@ public class Login {
 
         VelocityTemplateEngine vte = new VelocityTemplateEngine(conEngine);
 
-        return vte.render(new ModelAndView(model, "/Velocity/login.vm"));
+        return vte.render(new ModelAndView(model, page));
     };
 }
