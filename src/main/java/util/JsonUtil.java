@@ -8,13 +8,14 @@ import spark.ResponseTransformer;
  */
 public class JsonUtil {
 
-    public static String toJson(Object o)
-    {
-        return new Gson().toJson(o);
-    }
+    public static String toJson(Object object) {
 
-    public static ResponseTransformer json()
-    {
+        String g = new Gson().toJson(object);
+
+        return g;
+}
+
+    public static ResponseTransformer json() {
         return JsonUtil::toJson;
     }
 }
