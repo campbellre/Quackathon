@@ -22,7 +22,15 @@ public class ChatWebSocketHandler {
 
     @OnWebSocketMessage
     public void onMessage(Session user, String message) {
-        Chat.broadcastMessage(sender = Chat.userUsernameMap.get(user), msg = message);
+        if(message.equals(":computer:")) {
+            System.out.println("in image");
+            Chat.broadcastMessageI(sender = Chat.userUsernameMap.get(user), msg = message);
+        }
+        else{
+            Chat.broadcastMessage(sender = Chat.userUsernameMap.get(user), msg = message);
+        }
     }
 
+
 }
+
