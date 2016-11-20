@@ -27,6 +27,8 @@ public class Chat {
         get("/login", Login.GetPage);
         post("/login", Login.LoginPost);
 
+        get("/home", Home.GetPage);
+
         get("/images",  (req, response) -> {
                     response.type("application/json");
                     return Image.GetImageList();

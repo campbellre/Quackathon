@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
+    <link rel="stylesheet" href="style.css">
 
     <title>ShareCat</title>
 
@@ -87,22 +88,21 @@
 			</div>
 		</div>
 
-      <div id="chatControls">
+	  <div id="chatControls">
           <input id="message" placeholder="Type your message">
           <button id="images">Images</button>
           <button id="send">Send</button>
       </div>
       <ul id="userlist"> <!-- Built by JS --> </ul>
       <ul id="imagelist">
-
+          <!--
           <li>
               <img src="/images/images.png" onclick="sendMessage(':computer:');" />
           </li>
-
+          -->
       </ul>
       <div id="chat">    <!-- Built by JS --> </div>
       <script src="websocketDemo.js" type="application/javascript"></script>
-    </div>
     </div>
     <!-- /.container -->
 
